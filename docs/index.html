@@ -8866,11 +8866,18 @@ Cambia el ancho de una imagen a 1024px y cambia el alto automáticamente para co
 powercfg /h off
 ```</pre>
 </div>
-<div created="20170101130619058" modified="20170101131240532" tags="archlinux linux comando X11 manjaro" title="Deshabilitar el sonido de la campana [Arch Linux]">
+<div created="20170101130619058" modified="20170101134353167" tags="archlinux linux comando X11 manjaro" title="Deshabilitar el sonido de la campana [Arch Linux]">
 <pre>Para deshabilitar el sonido de la campana en todas las aplicaciones X use el siguiente comando:
 
 ```
 $&gt; xset b off
+```
+
+También se puede deshabilitar por completo deshabilitando el módulo del sistema creando el siguiente archivo y agregando la línea indicada:
+
+```
+$&gt; nano /etc/modprobe.d/blacklist-pcspkr.conf
+   blacklist pcspkr
 ```</pre>
 </div>
 <div created="20150814195136930" modified="20150814214154510" tags="linux ubuntu juegos emuladores consolas psx gba gameboy playstation n64 nintendo64 snes nes supernintendo" title="Emuladores de consolas [Linux]">
