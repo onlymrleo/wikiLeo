@@ -371,6 +371,8 @@ Error message and password prompt
 
 <li>VirtualBox 5.0.8 Ubuntu [vboxdrv problem]</li>
 
+<li>Wine y Winetricks</li>
+
 </ul>
 </p>
 
@@ -8227,7 +8229,7 @@ very-muted-foreground: #888888</pre>
 <div modified="20151109233031906" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/ViewToolbar</pre>
 </div>
-<div list="$:/AdvancedSearch [[Deshabilitar el sonido de la campana [Arch Linux]]] [[Herramientas útiles para archivos PDF [Linux]]] [[Habilitar KMS próntamente [Arch Linux]]] [[Script para convertir archivos AVI a mp4]] [[Problema con cursor invisible [Manjaro / Arch Linux]]] [[Modificar atajos de teclado de acciones en Nautilus y Caja]] [[Modificar el tamaño de particiones tmpfs [Arch Linux]]] [[Establecer JDK por defecto [Arch Linux]]] [[Problemas con las llaves al actualizar con Pacman [Manjaro]]] [[Login sin contraseña LightDM [Arch Linux/Manjaro]]]" title="$:/StoryList">
+<div list="[[Wine y Winetricks]] $:/AdvancedSearch [[Deshabilitar el sonido de la campana [Arch Linux]]] [[Herramientas útiles para archivos PDF [Linux]]] [[Habilitar KMS próntamente [Arch Linux]]] [[Script para convertir archivos AVI a mp4]] [[Problema con cursor invisible [Manjaro / Arch Linux]]] [[Modificar atajos de teclado de acciones en Nautilus y Caja]] [[Modificar el tamaño de particiones tmpfs [Arch Linux]]] [[Establecer JDK por defecto [Arch Linux]]] [[Problemas con las llaves al actualizar con Pacman [Manjaro]]] [[Login sin contraseña LightDM [Arch Linux/Manjaro]]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20150814204756018" modified="20160602025303907" title="$:/temp/advancedsearch">
@@ -8247,7 +8249,7 @@ very-muted-foreground: #888888</pre>
     }
 }</pre>
 </div>
-<div created="20150814195150315" modified="20170101131236860" title="$:/temp/NewTagName">
+<div created="20150814195150315" modified="20170131201824133" title="$:/temp/NewTagName">
 <pre></pre>
 </div>
 <div author="Paco Rivière" core-version="&gt;=5.0.0" created="20150814191205077" dependents="" description="Catalan (Spain)" icon="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22810%22%20height%3D%22540%22%3E%0A%3Crect%20width%3D%22810%22%20height%3D%22540%22%20fill%3D%22%23FCDD09%22%2F%3E%0A%3Cpath%20stroke%3D%22%23DA121A%22%20stroke-width%3D%2260%22%20d%3D%22M0%2C90H810m0%2C120H0m0%2C120H810m0%2C120H0%22%2F%3E%0A%3C%2Fsvg%3E" modified="20150814191205077" name="ca-ES" original-plugin-type="language" original-tags="" original-title="$:/languages/ca-ES" original-type="application/json" server-url="http://tiddlywiki.com/library/v5.1.9/index.html" tags="$:/tags/RemoteAssetInfo" title="$:/temp/RemoteAssetInfo/http://tiddlywiki.com/library/v5.1.9/index.html/$:/languages/ca-ES" type="text/vnd.tiddlywiki" version="5.1.9">
@@ -9340,6 +9342,90 @@ sudo pacman -S exfat-utils fuse-exfat
 ```
 sudo /sbin/rcvboxdrv setup
 ```</pre>
+</div>
+<div created="20170131181134515" modified="20170131201829250" tags="wine linux comando comandos archlinux ubuntu" title="Wine y Winetricks" type="text/vnd.tiddlywiki">
+<pre>Se requiere tener instalado `wine` en el sistema. Para instalar algunas bibliotecas de terceros y realizar otras configuraciones de forma más fácil, se puede hacer uso de `winetricks` (es necesario instalarlo ya que no forma parte de wine).
+
+&lt;&lt;&lt;
+```bash
+$&gt; sudo pacman -S wine winetricks
+```
+&lt;&lt;&lt;Instalación de `wine` y `winetricks` en Archlinux.
+
+&lt;&lt;&lt;
+```bash
+$&gt; sudo apt-get install wine
+```
+&lt;&lt;&lt;Instalación de `wine` en ubuntu y derivados.
+
+
+!!WINEPREFIX y WINEARCH
+
+`WINEPREFIX` es una variable de entorno que estable la ruta donde se guardarán todas las configuraciones y archivos de windows creados y usados por `wine`.
+
+`WINEARCH` es otra variable de entorno usada por `wine` para establecer la arquitectura que usará el perfil de wine que se desea crear, sólo puede llevar uno de estos dos valores `win32` para arquitecturas de 32 bits o `win64` para arquitecturas de 64 bits. Cuando el perfil de wine está creado, ya no es necesario establecer esta variable de entorno.
+
+!!Creando un perfil en Wine
+
+La creación básica de un perfil de `wine` bits es la siguiente:
+
+&lt;&lt;&lt;
+```bash
+$&gt; WINEARCH=64 WINEPREFIX=~/customprefix winecfg wineboot
+```
+&lt;&lt;&lt;Esto crea un perfil con arquitectura de 64 bits.
+
+&lt;&lt;&lt;
+```bash
+$&gt; WINEARCH=32 WINEPREFIX=~/customprefix winecfg wineboot
+```
+&lt;&lt;&lt;Esto crea un perfil con arquitectura de 32 bits.
+
+!!Ejecutando aplicaciones de Windows
+
+Para ejecutar aplicaciones de windows se usa el siguiente comando:
+
+```bash
+$&gt; WINEPREFIX=~/customprefix wine start /Unix ~/app.exe
+```
+
+!!Winetricks
+
+`winetricks` es un script que permite la instalación de bibliotecas (por ejemplo ~DirectX o .NET) y acceso a configuraciones avanzadas del los perfiles de `wine`.
+
+Para ejecutar `winetricks` sobre un perfil de `wine` se usa el siguiente comando:
+
+```bash
+$&gt; WINEPREFIX=~/customprefix winetricks
+```
+
+!!Accesos directos de aplicaciones
+
+Los accesos directos de las aplicaciones instaladas en `wine` se guardan en el directorio `~/.local/share/applications/wine/Programs/`.
+
+!!Herramientas de Wine
+
+''winecfg:'' Muestra la configuración del perfil de `wine`.
+''wineboot'': Crea un perfil de `wine` o también puede simular un reinicio del windows.
+
+!!Wine Staging
+
+Es un paquete de `wine` al que se le han aplicado una serie de parches para mejorar su rendimiento en diferentes aspectos (por ejemplo el rendimiento en los gráficos).
+
+&lt;&lt;&lt;
+```bash
+$&gt; sudo pacman -Syu wine-staging
+```
+&lt;&lt;&lt;Intalación de `wine-staging` en Archlinux.
+
+&lt;&lt;&lt;
+```bash
+$&gt; sudo add-apt-repository ppa:wine/wine-builds
+$&gt; sudo apt-get update
+$&gt; sudo apt-get install --install-recommends wine-staging
+$&gt; sudo apt-get install winehq-staging
+```
+&lt;&lt;&lt;Intalación de `wine-staging` en Ubuntu y derivados.</pre>
 </div>
 
 </div>
