@@ -155,6 +155,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/tab--1498284803</li>
 
 <li>$:/state/tab/moresidebar-401116514</li>
@@ -166,6 +168,8 @@ Error message and password prompt
 <li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/theme</li>
 
@@ -191,6 +195,8 @@ Error message and password prompt
 
 <li>Audio USB muy fuerte o mudo en Ubuntu</li>
 
+<li>Cifrar y descifrar carpetas con eCryptfs (Arch Linux)</li>
+
 <li>Cifrar y descifrar carpetas con EncFS</li>
 
 <li>Comando para ejecutar el menú de aplicaciones Whisker</li>
@@ -201,11 +207,15 @@ Error message and password prompt
 
 <li>Crear hojas de previsualización de video (Arch Linux/AUR)</li>
 
+<li>Crear imágenes de PSX (Linux)</li>
+
 <li>Desactivar inicio rápido Windows 8</li>
 
 <li>Deshabilitar el sonido de la campana (Arch Linux)</li>
 
 <li>Emuladores de consolas (Linux)</li>
+
+<li>Emular unidades de CD virtuales con CDemu (Arch Linux)</li>
 
 <li>Establecer JDK por defecto (Arch Linux)</li>
 
@@ -239,6 +249,8 @@ Error message and password prompt
 
 <li>Mozilla Holiday Calendars</li>
 
+<li>Pacman y Yaourt sin confirmación (Arch Linux)</li>
+
 <li>Problema con cursor invisible (Manjaro / Arch Linux)</li>
 
 <li>Problema repositorio google chrome (main/binary-i386/Packages)</li>
@@ -250,6 +262,8 @@ Error message and password prompt
 <li>Restaurar el menú de aplicaciones en KDE</li>
 
 <li>Script Bash para cifrar y descifrar carpetas con EncFS</li>
+
+<li>Script para cifrar y descifrar carpetas con eCryptfs (Arch Linux)</li>
 
 <li>Script para convertir archivos AVI a mp4</li>
 
@@ -10754,6 +10768,9 @@ very-muted-foreground: #888888</pre>
 <div created="20150814185505853" modified="20170419201140189" title="$:/SiteTitle">
 <pre>LeocmPRO</pre>
 </div>
+<div created="20170430140341709" modified="20170430140341709" title="$:/state/showeditpreview">
+<pre>yes</pre>
+</div>
 <div created="20170427132714812" modified="20170427141206225" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
 </div>
@@ -10763,7 +10780,7 @@ very-muted-foreground: #888888</pre>
 <div created="20170427134108121" modified="20170427141157441" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="[[Wine y Winetricks]] [[VirtualBox 5.0.8 Ubuntu (vboxdrv problem)]] [[Sistema de archivos exFAT (Linux)]] [[Script para convertir archivos AVI a mp4]] [[Script Bash para cifrar y descifrar carpetas con EncFS]]" title="$:/StoryList">
+<div list="[[Pacman y Yaourt sin confirmación (Arch Linux)]] [[Emular unidades de CD virtuales con CDemu (Arch Linux)]] [[Crear imágenes de PSX (Linux)]] [[Cifrar y descifrar carpetas con eCryptfs (Arch Linux)]] [[Script para cifrar y descifrar carpetas con eCryptfs (Arch Linux)]] [[Estilo clásico Firefox (Manjaro)]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20170427132717192" modified="20170427141201490" title="$:/temp/advancedsearch">
@@ -10782,6 +10799,9 @@ very-muted-foreground: #888888</pre>
         }
     }
 }</pre>
+</div>
+<div created="20170430134638693" modified="20170430141925849" title="$:/temp/search">
+<pre></pre>
 </div>
 <div modified="20150815111632256" title="$:/theme">
 <pre>$:/themes/tiddlywiki/vanilla</pre>
@@ -11017,6 +11037,31 @@ $&gt; /etc/pulse/default.pa
 ```
 </pre>
 </div>
+<div created="20170430135514288" modified="20170430141908656" tags="linux cifrado cifrar comando comandos archlinux directorio" title="Cifrar y descifrar carpetas con eCryptfs (Arch Linux)" type="text/vnd.tiddlywiki">
+<pre>Instale el paquete `ecryptfs-utils`:
+
+```bash
+$&gt; pacman -S ecryptfs-utils
+```
+
+!!Crear carpeta cifrada en el `home`
+
+Para crear una carpeta cifrada llamada `Private` en el directorio `home` use el siguiente comando:
+
+```bash
+$&gt; ecryptfs-mount-private
+```
+
+Para desmontar la carpeta `Private` use el siguiente comando:
+
+```
+$&gt; ecryptfs-umount-private
+```
+
+Puede encontrar más información sobre como usar esta herramienta en [ext[eCryptfs|https://wiki.archlinux.org/index.php/ECryptfs]].
+
+También puede encontrar un script para cifrar y descifrar carpetas en [[Script para cifrar y descifrar carpetas con eCryptfs (Arch Linux)]].</pre>
+</div>
 <div created="20141217031149621" creator="onlymrleo" modified="20170427134951878" modifier="onlymrleo" tags="cifrado cifrar encriptar seguridad linux folder carpeta encfs" title="Cifrar y descifrar carpetas con EncFS" type="text/vnd.tiddlywiki">
 <pre>Primero necesita tener instalado ~EncFS, para instalarlo en ubuntu y derivados use el siguiente comando:
 
@@ -11184,6 +11229,31 @@ Para más información puede consultar la ayuda del programa a través del sigui
 $&gt; vcsi -h
 ```</pre>
 </div>
+<div created="20170430144053252" modified="20170430144633239" tags="linux imagen psx comando comandos" title="Crear imágenes de PSX (Linux)" type="text/vnd.tiddlywiki">
+<pre>Verifique el nombre del dispositivo óptico:
+
+```bash
+$&gt; cdrdao scanbus
+```
+
+Desmonte el dispositivo en caso de estar montado, por ejemplo para el dispositivo `sr0`:
+
+```bash
+$&gt; umount /dev/sr0
+```
+
+Proceda a generar la imagen:
+
+```bash
+cdrdao read-cd --read-raw --read-subchan rw_raw --datafile IMAGE_NAME.bin --device /dev/sr0 --driver generic-mmc-raw IMAGE_NAME.toc
+```
+
+Genere la hoja `CUE` a partir del archivo `TOC`:
+
+```bash
+$&gt; toc2cue IMAGE_NAME.toc IMAGE_NAME.cue
+```</pre>
+</div>
 <div created="20160417151407694" modified="20170427135130716" tags="windows [[inicio rapido]] comando" title="Desactivar inicio rápido Windows 8" type="text/vnd.tiddlywiki">
 <pre>Para desactivar el inicio rápido en Windows 8 ejecute el siguiente comando:
 
@@ -11233,6 +11303,55 @@ Para instalarlo en Arch Linux: `pacman -S fceux`&lt;/div&gt;
 *''[ext[VBA-M|http://sourceforge.net/projects/vbam/]]''&lt;div&gt;Para instalarlo en ubuntu: descargar archivos de la página oficial e instalarlos con el gestor de paquetes de preferencia o usando `dpkg -i paquete.deb`&lt;br /&gt;
 Para instalarlo en Arch Linux: `pacman -S vbam-gtk`&lt;/div&gt;</pre>
 </div>
+<div created="20170430142356893" modified="20170430144856825" tags="comando comandos linux archlinux [[unidad virtual]] emuladores" title="Emular unidades de CD virtuales con CDemu (Arch Linux)" type="text/vnd.tiddlywiki">
+<pre>`CDemu` es un programa que permite crear unidades de CD virtuales a partir de imágenes de CD. Para empezar, instale el paquete `cdemu-client`:
+
+```bash
+$&gt; pacman -S cdemu-client
+```
+
+!!Ejemplos de uso
+
+&lt;&lt;&lt;
+```bash
+$&gt; cdemu load 0 /ruta_hacia_la_imagen/image.mds
+```
+&lt;&lt;&lt;Montar una imagen tipo `*.mds` en el primer dispositivo.
+
+&lt;&lt;&lt;
+```bash
+$&gt; cdemu load 0 ~/session1.toc ~/session2.toc ~/session3.toc
+```
+&lt;&lt;&lt;Montar una imagen de múltiples archivos en el primer dispositivo.
+
+&lt;&lt;&lt;
+```bash
+$&gt; cdemu load 0 ~/image.cue --encoding=windows-1250
+```
+&lt;&lt;&lt;Montar una imagen en el primer dispositivo eligiendo la codificación.
+
+&lt;&lt;&lt;
+```bash
+$&gt; cdemu unload 0
+```
+&lt;&lt;&lt;Descargar el primer dispositivo.
+
+&lt;&lt;&lt;
+```bash
+$&gt; cdemu status
+```
+&lt;&lt;&lt;Muestra el estado de los dispositivos.
+
+&lt;&lt;&lt;
+```bash
+$&gt; cdemu device-mapping
+```
+&lt;&lt;&lt;Muestra información de los dispositivos.
+
+Puede usar herramientas gráficas como por ejemplo: `kde-cdemu-manager`^^AUR^^, `kde-cdemu-manager-kf5`^^AUR^^ o  `gcdemu`^^AUR^^.
+
+Puede encontrar más información sobre uso del comando en [ext[CDemu|https://wiki.archlinux.org/index.php/CDemu]].</pre>
+</div>
 <div created="20160521191041675" modified="20170427133901091" tags="jdk java linux comando archlinux" title="Establecer JDK por defecto (Arch Linux)" type="text/vnd.tiddlywiki">
 <pre>Para establecer el JDK por defecto en Arch Linux (cuando se tienen dos o más versiones del JDK) puede usar el siguiente comando:
 
@@ -11246,7 +11365,7 @@ Para conocer el estado del JDK que tiene por defecto el sistema, use el siguient
 $&gt; archlinux-java status
 ```</pre>
 </div>
-<div created="20170427130806674" modified="20170427132601942" tags="linux firefox manjaro" title="Estilo clásico Firefox (Manjaro)" type="text/vnd.tiddlywiki">
+<div created="20170427130806674" modified="20170430134648614" tags="linux firefox manjaro" title="Estilo clásico Firefox (Manjaro)" type="text/vnd.tiddlywiki">
 <pre>Para regresar al estilo visual clásico de Firefox en Manjaro, es necesario borrar la carpeta llamada `chrome` dentro de la ruta `.mozilla/firefox/perfil/`, la carpeta `.mozilla` se encuentra en el directorio `home` de cada usuario.</pre>
 </div>
 <div created="20141217024231030" creator="onlymrleo" modified="20170427135305915" modifier="onlymrleo" tags="formatear usb linux" title="Formatear memoria USB en linux" type="text/vnd.tiddlywiki">
@@ -11482,6 +11601,21 @@ Donde `/tmp` representa el punto de montaje y `size=2G` el tamaño de la partici
 <div created="20141216184358724" creator="onlymrleo" modified="20170427140538619" modifier="onlymrleo" tags="calendario festivos" title="Mozilla Holiday Calendars" type="text/vnd.tiddlywiki">
 <pre>[[Mozilla Holiday Calendars|https://www.mozilla.org/en-US/projects/calendar/holidays/]] provee de una amplia base de datos de calendarios (en formato ics) con las festividades de cada país para usarlos en nuestro gestor de calendarios preferido.</pre>
 </div>
+<div created="20170430144903397" modified="20170430145237936" tags="archlinux pacman comando comandos" title="Pacman y Yaourt sin confirmación (Arch Linux)" type="text/vnd.tiddlywiki">
+<pre>Para usar `pacman` o `yaourt` y que estos no pidan confirmación para realizar determinadas acciones incluya la opción `--noconfirm` dentro de la ejecución del comando, por ejemplo:
+
+&lt;&lt;&lt;
+```bash
+$&gt; sudo pacman -Syu --noconfirm
+```
+&lt;&lt;&lt;Actualiza el sistema sin pedir confirmación.
+
+&lt;&lt;&lt;
+```bash
+$&gt; yaourt -Syu --aur --noconfirm
+```
+&lt;&lt;&lt;Actualiza los paquetes de `AUR` sin pedir confirmación.</pre>
+</div>
 <div created="20160602022042357" modified="20170427140549801" tags="archlinux manjaro problema intel X11 linux" title="Problema con cursor invisible (Manjaro / Arch Linux)" type="text/vnd.tiddlywiki">
 <pre>Para solucionar el problema del cursor invisible en Manjaro o Arch Linux es necesario encontrar un archivo en `/etc/X11/xorg.conf.d/` que contenga las siguientes líneas:
 
@@ -11632,6 +11766,47 @@ $&gt; myencfs ruta_carpeta_no_cifrada
 Si la carpeta no existe la creará y creará la carpeta cifrada en el mismo directorio como `.ruta_carpeta_no_cifrada`. El script hará una pausa en este momento el usuario puede escribir o leer datos en la carpeta descifrada que se ha creado.
 
 Tras presionar enter el script desmontará el sistema cifrado y eliminará la carpeta no cifrada a igual que las miniaturas guardadas en `.thumbnails`</pre>
+</div>
+<div created="20170430141445116" modified="20170430141805342" tags="linux archlinux comando comandos script" title="Script para cifrar y descifrar carpetas con eCryptfs (Arch Linux)" type="text/vnd.tiddlywiki">
+<pre>```bash
+#!/bin/sh
+# -*- coding: UTF-8 -*-
+ENCDIR=&quot;&quot;
+myErr() { rm -R ~/.ecryptfs/$ENCDIR.conf ~/.ecryptfs/$ENCDIR.sig &amp;&gt; /dev/null; echo &quot;$1&quot;; exit 1; }
+myMount() {
+	[ &quot;$2&quot; != &quot;&quot; ] &amp;&amp; myErr &quot;El nombre del directorio no puede contener espacios.&quot;
+	[ ! -d .$ENCDIR ] &amp;&amp; { mkdir .$ENCDIR || myErr &quot;No se puede crear el directorio .$ENCDIR&quot;; }
+	[ ! -d $1 ] &amp;&amp; { mkdir $ENCDIR || myErr &quot;No se puede crear el directorio $ENCDIR&quot;; }
+	[ &quot;$(ls -A $ENCDIR)&quot; ] &amp;&amp; myErr &quot;El directorio $ENCDIR no está vacío.&quot;
+	[ ! -d ~/.ecryptfs ] &amp;&amp; { mkdir ~/.ecryptfs || myErr &quot;No se puede crear el directorio ~/.ecryptfs&quot;; }
+	echo &quot;$(pwd)/.$ENCDIR $(pwd)/$ENCDIR ecryptfs&quot; &gt; ~/.ecryptfs/$ENCDIR.conf || myErr &quot;No se puede crear el archivo ~/.ecryptfs/$ENCDIR.conf&quot;
+	echo -n &quot;Ingrese la contraseña: &quot;
+	sign=$(ecryptfs-add-passphrase | grep '\[' | cut -f2 -d[ | cut -f1 -d])
+	echo $sign &gt; ~/.ecryptfs/$ENCDIR.sig || myErr &quot;No se puede crear el archivo ~/.ecryptfs/$ENCDIR.sig&quot;
+	echo $sign &gt;&gt; ~/.ecryptfs/$ENCDIR.sig || myErr &quot;No se puede actualizar el archivo ~/.ecryptfs/$ENCDIR.sig&quot;
+	mount.ecryptfs_private $ENCDIR || myErr &quot;No se puede montar el directorio $1&quot;
+	echo &quot;&quot;
+}
+myUmount() {
+	rm -R ~/.thumbnails/* ~/.cache/thumbnails/* &amp;&gt; /dev/null
+	umount.ecryptfs_private $ENCDIR
+	[ &quot;$(ls -A $ENCDIR)&quot; ] &amp;&amp; myErr &quot;El directorio $ENCDIR no está vacío.&quot;
+	[ -d $1 ] &amp;&amp; { rmdir $ENCDIR || myErr &quot;No se puede eliminar el directorio $ENCDIR&quot;; }
+	[ -e ~/.ecryptfs/$ENCDIR.conf ] &amp;&amp; { rm ~/.ecryptfs/$ENCDIR.conf || myErr &quot;No se puede eliminar el archivos $ENCDIR.conf&quot;; }
+	[ -e ~/.ecryptfs/$ENCDIR.sig ] &amp;&amp; { rm ~/.ecryptfs/$ENCDIR.sig || myErr &quot;No se puede eliminar el archivo $ENCDIR.sig&quot;; }
+}
+if [ &quot;$1&quot; != &quot;&quot; ]; then
+	ENCDIR=$1
+	if [ &quot;$(mount | grep -w $(pwd)/$ENCDIR)&quot; == &quot;&quot; ]; then
+		myMount $1
+	fi
+	echo -n &quot;Presione una tecla para desmontar&quot;
+	read -r pause
+	myUmount
+else
+	echo &quot;Debe indicar una carpeta cifrada para montar.&quot;
+fi
+```</pre>
 </div>
 <div created="20150822132016631" modified="20170427140738252" tags="script bash linux conversor convertir avconv ffmpeg" title="Script para convertir archivos AVI a mp4" type="text/vnd.tiddlywiki">
 <pre>```bash
