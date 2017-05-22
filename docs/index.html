@@ -225,6 +225,8 @@ Error message and password prompt
 
 <li>Generar certificado SSL (Linux)</li>
 
+<li>Generar contraseñas (Linux)</li>
+
 <li>Habilitar KMS próntamente (Arch Linux)</li>
 
 <li>Herramientas Open-Source para empresas</li>
@@ -10780,7 +10782,7 @@ very-muted-foreground: #888888</pre>
 <div created="20170427134108121" modified="20170427141157441" title="$:/state/tab/sidebar--1835078512">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div list="[[Pacman y Yaourt sin confirmación (Arch Linux)]] [[Emular unidades de CD virtuales con CDemu (Arch Linux)]] [[Crear imágenes de PSX (Linux)]] [[Cifrar y descifrar carpetas con eCryptfs (Arch Linux)]] [[Script para cifrar y descifrar carpetas con eCryptfs (Arch Linux)]] [[Estilo clásico Firefox (Manjaro)]]" title="$:/StoryList">
+<div list="[[Generar contraseñas (Linux)]] [[Pacman y Yaourt sin confirmación (Arch Linux)]] [[Emular unidades de CD virtuales con CDemu (Arch Linux)]] [[Crear imágenes de PSX (Linux)]] [[Cifrar y descifrar carpetas con eCryptfs (Arch Linux)]] [[Script para cifrar y descifrar carpetas con eCryptfs (Arch Linux)]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20170427132717192" modified="20170427141201490" title="$:/temp/advancedsearch">
@@ -11407,6 +11409,15 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out serv
 ```
 
 Con esto tendremos los archivos `server.key` y `server.crt`.</pre>
+</div>
+<div created="20170522155550244" modified="20170522155706446" tags="linux seguridad contraseña comando generador" title="Generar contraseñas (Linux)" type="text/vnd.tiddlywiki">
+<pre>Un comando simple para generar contraseñas seguras en linux es el siguiente:
+
+&lt;&lt;&lt;
+```bash
+$&gt;&lt; /dev/urandom tr -cd &quot;[:print:]&quot; | head -c 32; echo
+```
+&lt;&lt;&lt;Esto genera una contraseña al azar de 32 caracteres.</pre>
 </div>
 <div created="20160602025011727" modified="20170427135331170" tags="intel kms archlinux linux" title="Habilitar KMS próntamente (Arch Linux)" type="text/vnd.tiddlywiki">
 <pre>Para habilitar el inicio temprano de KMS en las GPU Intel es necesario agregar el módulo `i915` a la línea `MODULES` en el archivo `/etc/mkinitcpio.conf`. También puede necesitar agregar el módulo `intel_agp` antes de `i915` para evitar errores ACPI.
